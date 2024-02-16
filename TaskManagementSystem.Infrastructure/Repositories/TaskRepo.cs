@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagementSystem.Core.Interfaces;
 
-namespace TaskManagementSystem.Infrastructure
+namespace TaskManagementSystem.Infrastructure.Repositories
 {
     public class TaskRepo : ITaskRepo
     {

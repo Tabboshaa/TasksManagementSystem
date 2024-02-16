@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel.DataAnnotations;
 namespace TaskManagementSystem.Core.Entities
 {
-    public class Task
+    public class TaskEntity
     {
-        public int Id { get; set; }
+        [Key]
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime DeadLine { get; set; }
