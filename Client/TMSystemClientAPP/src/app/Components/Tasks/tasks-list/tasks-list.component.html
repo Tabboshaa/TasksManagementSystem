@@ -1,8 +1,8 @@
 <div class="container mt-4">
     <h2>Task List</h2>
     <button type="button" class="btn btn-success">
-        <i class="fas fa-plus"></i>
-      </button>
+        <i class="fas fa-plus"></i> Add Task
+    </button>
       
     <table class="table table-striped">
       <thead>
@@ -23,9 +23,9 @@
           <td>{{ task.deadline | date }}</td>
           <td>{{ task.assignedTo }}</td>
           <td>
-            <button class="btn btn-danger" >Delete</button>
+            <a class="btn btn-danger" (click)="deleteTask(task.id)" >Delete</a>
           </td>
         </tr>
       </tbody>
     </table>
-  </div>
+</div>

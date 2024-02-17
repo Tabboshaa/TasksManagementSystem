@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskEntity } from 'src/app/Model/Task.Model';
+import { TasksService } from 'src/app/Services/tasks.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -6,34 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks-list.component.css']
 })
 export class TasksListComponent implements OnInit {
-  tasks: any[] = [
-    { 
-      title: 'Task 1',
-      description: 'Description for task 1',
-      priority: 'High',
-      status: 'Pending',
-      deadline: new Date('2024-02-20'),
-      assignedTo: 'John Doe'
-    },
-    // Add more sample tasks here if needed
-  ];
+  
+  tasks: TaskEntity[] = [];
 
-  constructor() { }
+  constructor(private taskService: TasksService) { }
 
   ngOnInit(): void {
+      this.getAllTasks();
   }
-  selectedTask: any;
-
-  showTaskDetails(task: any): void {
-    this.selectedTask = task;
+  getAllTasks() {
+    debugger;
+    this.taskService.getAllTasks().subscribe(
+      (response: TaskEntity[]) => { 
+        this.tasks = response;
+      }
+    );
   }
-
-  deleteTask(task: any): void {
-    const index = this.tasks.findIndex(t => t.id === task.id);
-    if (index !== -1) {
-      this.tasks.splice(index, 1);
-      this.selectedTask = null; // Reset selected task after deletion
-    }
+  deleteTask(id:string)
+  {
+    debugger;
+    this.taskService.deleteTask(id).subscribe();
   }
 
 }
