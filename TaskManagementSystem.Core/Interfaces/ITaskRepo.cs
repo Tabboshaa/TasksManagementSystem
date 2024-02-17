@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagementSystem.Core.Entities;
 
 namespace TaskManagementSystem.Core.Interfaces
 {
     public interface ITaskRepo
     {
-        Task GetTaskById(int taskId);
-        IEnumerable<Task> GetAllTasks();
-        void CreateTask(Task task);
-        void UpdateTask(Task task);
-        void DeleteTask(int taskId);
+        Task<TaskEntity> GetTaskByIdAsync(Guid id);
+        Task<IEnumerable<TaskEntity>> GetAllTasksAsync();
+        Task CreateTaskAsync(TaskEntity task);
+        Task UpdateTaskAsync(Guid id, TaskEntity updatedTask);
+        Task DeleteTaskAsync(Guid id);
     }
 }
